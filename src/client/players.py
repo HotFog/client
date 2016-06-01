@@ -89,13 +89,13 @@ class Players:
             return self.colors["default"]
 
     def keys(self):
-        return self._players.keys()
+        return list(self._players.keys())
 
     def values(self):
-        return self._players.values()
+        return list(self._players.values())
 
     def items(self):
-        return self._players.items()
+        return list(self._players.items())
 
     def get(self, item, default):
         val = self.__getitem__(item)
@@ -113,7 +113,7 @@ class Players:
             if not self._warned:
                 logger.warning("Expensive lookup by player login, FIXME.")
                 self._warned = True
-            by_login = {p.login: p for _, p in self._players.items()}
+            by_login = {p.login: p for _, p in list(self._players.items())}
             if item in by_login:
                 return by_login[item]
 
