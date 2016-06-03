@@ -142,12 +142,6 @@ class GamesWidget(FormClass, BaseClass):
         if self.hideGamesWithPw.isChecked() and message['state'] == 'open' and message['password_protected']:
             self.games[uid].setHidden(True)
 
-        # Special case: removal of a game that has ended
-        if message['state'] == "closed":
-            if uid in self.games:
-                self.gameList.takeItem(self.gameList.row(self.games[uid]))
-                del self.games[uid]
-
     def startSearchRanked(self, race):
         for faction, icon in list(self._ranked_icons.items()):
             icon.setChecked(faction == race)
